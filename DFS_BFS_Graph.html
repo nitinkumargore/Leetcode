@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Two Sum</title>
+    <script>
+      // Solution to problem in JS
+      // Create a graph, used for both DFS and BFS
+      const graph = {
+        A: ["B", "C"],
+        B: ["D", "E"],
+        C: ["F"],
+        D: [],
+        E: ["F"],
+        F: [],
+      };
+    </script>
+
+    <script>
+      // Perform a DFS on the graph
+      const visited = [];
+      function dfs(graph, node) {
+        // Mark the node as visited
+        visited[node] = true;
+
+        // Log the node
+        console.log(node);
+
+        // Recursively call the DFS function on each of the node's neighbors
+        for (const neighbor of graph[node]) {
+          if (!visited[neighbor]) {
+            dfs(graph, neighbor);
+          }
+        }
+      }
+
+      // Initialize the visited array
+
+      // Start the DFS at the root node
+      console.log("============= DFS ===============");
+      dfs(graph, "A");
+    </script>
+
+    <script>
+      // Perform a BFS on the graph
+      const visitedBfs = [];
+      function bfs(graph, node) {
+        const queue = [node];
+        while (queue.length > 0) {
+          const currentNode = queue.shift();
+          console.log(currentNode);
+          for (const n of graph[currentNode]) {
+            if (!visitedBfs[n]) {
+              queue.push(n);
+              visitedBfs[n] = true;
+            }
+          }
+        }
+      }
+
+      // Initialize the visited array
+
+      // Start the BFS at the root node
+      console.log("============= BFS ===============");
+      bfs(graph, "A");
+    </script>
+  </head>
+  <body>
+    <h2>DFS and BFS on Graph</h2>
+    <p>// Graph used in this example</p>
+
+    const graph = { A: ["B", "C"], B: ["D", "E"], C: ["F"], D: [], E: ["F"], F:
+    [], };
+    <!-- <h4><a href="https://leetcode.com/problems/two-sum/">Problem link </a></h4>
+    Given an array of integers nums and an integer target, return indices of the
+    two numbers such that they add up to target. You may assume that each input
+    would have exactly one solution, and you may not use the same element twice.
+    You can return the answer in any order.
+
+    <p>
+      Example 1: Input: nums = [2,7,11,15], target = 9 Output: [0,1]
+      Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+    </p>
+    <p>Example 2: Input: nums = [3,2,4], target = 6 Output: [1,2]</p>
+    <p>
+      Example 3: Input: nums = [3,3], target = 6 Output: [0,1] Constraints: 2 <=
+      nums.length <= 104 -109 <= nums[i] <= 109 -109 <= target <= 109 Only one
+      valid answer exists.
+    </p>
+
+    Follow-up: Can you come up with an algorithm that is less than O(n2) time
+    complexity? -->
+  </body>
+</html>
